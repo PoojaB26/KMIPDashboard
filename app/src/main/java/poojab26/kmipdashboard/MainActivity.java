@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findMatch("34267585a");
-        stringToObjects();
+        findMatch("Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Insert executeWithColumnPositions(String, String, NamedParameters) ALL: SQL=INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?)");
+       // stringToObjects();
     }
     private void jsonSTuff(){
 
@@ -51,26 +51,41 @@ public class MainActivity extends AppCompatActivity {
     }
     private void findMatch(String myString) {
 
-        String match1 = "";
-        String match2 = "";
-        String match3 = "";
+        String FullMatch = "";
+        String Date = "";
+        String Thread = "";
+        String Class = "";
+        String functionName = "";
+        String logLevel = "";
+        String LogW = "";
 
 
 
         // Pattern to find code
-        String pattern = "^([0-9]{8})([a-z])$";  // Sequence of 8 digits
+        String pattern = "([A-Za-z]{3} [1-31]*, \\d{4} \\d{2}:\\d{2}:\\d{2} AM|PM) (Thread\\[.*\\]) (com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST)):(.*)";  // Sequence of 8 digits
         Pattern regEx = Pattern.compile(pattern);
 
         // Find instance of pattern matches
         Matcher m = regEx.matcher(myString);
         if (m.find()) {
-            match1 = m.group(0);
-            match2 = m.group(1);
-            match3 = m.group(2);
+            FullMatch = m.group(0);
+            Date = m.group(1);
+            Thread = m.group(2);
+            Class = m.group(3);
+            functionName = m.group(5);
+            logLevel = m.group(6);
+            LogW = m.group(7);
+
 
 
         }
-        Log.d("MATCH", match2);
+        Log.d("MATCH", LogW);
+        Log.d("MATCH", logLevel);
+        Log.d("MATCH", functionName);
+        Log.d("MATCH", Class);
+        Log.d("MATCH", Thread);
+        Log.d("MATCH", Date);
+
     }
 
     public void stringToObjects(){
