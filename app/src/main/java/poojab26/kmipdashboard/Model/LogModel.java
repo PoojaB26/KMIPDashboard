@@ -14,7 +14,7 @@ public class LogModel {
 
     @SerializedName("timestamp")
     @Expose
-    private Integer timestamp;
+    private String timestamp;
     @SerializedName("classname")
     @Expose
     private String classname;
@@ -29,7 +29,7 @@ public class LogModel {
     private String log;
 
     public LogModel(){};
-    public LogModel(Integer timestamp, String classname, String functionName, String logLevel, String log) {
+    public LogModel(String timestamp, String classname, String functionName, String logLevel, String log) {
         super();
         this.timestamp = timestamp;
         this.classname = classname;
@@ -38,11 +38,11 @@ public class LogModel {
         this.log = log;
     }
 
-    public Integer getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
