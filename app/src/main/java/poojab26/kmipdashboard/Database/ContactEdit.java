@@ -6,9 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import poojab26.kmipdashboard.R;
@@ -19,10 +17,8 @@ import poojab26.kmipdashboard.R;
 
 public class ContactEdit extends Activity implements View.OnClickListener {
 
-    private Spinner categoryList;
     private Button save, delete;
     private String mode;
-    private EditText phone, name, email;
     private String id;
 
     @Override
@@ -43,19 +39,6 @@ public class ContactEdit extends Activity implements View.OnClickListener {
         delete = (Button) findViewById(R.id.delete);
         delete.setOnClickListener(this);
 
-        phone = (EditText) findViewById(R.id.phone);
-        name = (EditText) findViewById(R.id.name);
-        email = (EditText) findViewById(R.id.email);
-
-
-
-        // create a dropdown for users to select various continents
-        categoryList = (Spinner) findViewById(R.id.categoryList);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.category_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categoryList.setAdapter(adapter);
-
         // if in add mode disable the delete option
         if(mode.trim().equalsIgnoreCase("add")){
             delete.setEnabled(false);
@@ -64,7 +47,7 @@ public class ContactEdit extends Activity implements View.OnClickListener {
         else{
             Bundle bundle = this.getIntent().getExtras();
             id = bundle.getString("rowId");
-            loadContactInfo();
+            //loadContactInfo();
         }
 
     }
@@ -75,11 +58,11 @@ public class ContactEdit extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.save:
                 ContentValues values = new ContentValues();
-                values.put(ContactsDb.KEY_PHONE, 645);
+                values.put(ContactsDb.KEY_PHONE, 33);
                 values.put(ContactsDb.KEY_NAME, "h");
                 values.put(ContactsDb.KEY_CATEGORY, "j");
                 values.put(ContactsDb.KEY_EMAIL, "k");
-getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
+                getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
 
                 finish();
                 break;
@@ -118,11 +101,11 @@ getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
             String myCategory = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDb.KEY_CATEGORY));
             String myEmail = cursor.getString(cursor.getColumnIndexOrThrow(ContactsDb.KEY_EMAIL));
 
-            phone.setText(myPhone);
+       /*     phone.setText(myPhone);
             name.setText(myName);
             email.setText(myEmail);
 
-            categoryList.setSelection(getIndex(categoryList, myCategory));
+            categoryList.setSelection(getIndex(categoryList, myCategory));*/
         }
 
 

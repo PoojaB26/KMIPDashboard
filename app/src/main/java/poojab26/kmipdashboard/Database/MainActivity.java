@@ -13,8 +13,10 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import poojab26.kmipdashboard.R;
@@ -27,7 +29,11 @@ import poojab26.kmipdashboard.R;
 public class MainActivity extends Activity implements
         LoaderManager.LoaderCallbacks<Cursor>{
         private static final String AUTHORITY = "com.as400samplecode.contentprovider";
-
+        private Spinner categoryList;
+        private Button save, delete;
+        private String mode;
+        private EditText phone, name, email;
+        private String id;
         // create content URIs from the authority by appending path to database table
         public static final Uri URL =
                 Uri.parse("content://" + AUTHORITY + "/contacts");
