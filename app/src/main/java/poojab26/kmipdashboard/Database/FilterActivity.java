@@ -8,9 +8,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -21,7 +18,7 @@ import poojab26.kmipdashboard.R;
  * Created by pblead26 on 26-Mar-17.
  */
 
-public class MainActivity extends Activity implements
+public class FilterActivity extends Activity implements
         LoaderManager.LoaderCallbacks<Cursor>{
         private static final String AUTHORITY = "com.pblead26.contentprovider";
 
@@ -36,16 +33,8 @@ public class MainActivity extends Activity implements
                 setContentView(R.layout.activity_main);
 
                 displayListView();
-
-                Button add = (Button) findViewById(R.id.add);
-                add.setOnClickListener(new OnClickListener() {
-
-                        public void onClick(View v) {
-                                // starts a new Intent to add a Country
-                                Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
-                                startActivity(contactEdit);
-                        }
-                });
+                Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
+                startActivity(contactEdit);
 
         }
 
@@ -112,6 +101,8 @@ public class MainActivity extends Activity implements
                         LogsDb.KEY_FUNCTION,
                         LogsDb.KEY_LOGLEVEL,
                         LogsDb.KEY_LOGW};
+
+
                 String selection = LogsDb.KEY_DATE + "=?";
                 String[] selectionArgs = {"Dec 13, 2016"};
                 CursorLoader cursorLoader = new CursorLoader(this,

@@ -15,22 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_above="@+id/add" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_weight="0.8"
-        android:gravity="center"
-        android:textSize="9sp"
-        android:text="Developed by Pooja Bhaumik"
-        android:padding="5dp"/>
 
 
-    <Button android:id="@+id/add"
-        android:layout_weight="0.8"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:text="ADD CONTACT"
-        android:background="#DC7563"
-        android:textColor="#ffffff"
-        />
+
 </LinearLayout>
