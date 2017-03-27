@@ -24,13 +24,5 @@
 
             android:text="@string/save_country" />
 
-        <Button android:id="@+id/delete"
-            android:layout_weight="2"
-            android:background="#f69f8c"
-            android:textColor="#ffffff"
-
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/save" android:layout_alignBottom="@+id/save"
-            android:layout_toLeftOf="@+id/save" android:text="@string/del_country" />
-    </LinearLayout>
+        </LinearLayout>
 </LinearLayout>

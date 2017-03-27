@@ -10,14 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import poojab26.kmipdashboard.R;
 
@@ -102,35 +99,6 @@ public class MainActivity extends Activity implements
                 listView.setAdapter(dataAdapter);
                 //Ensures a loader is initialized and active.
                 getLoaderManager().initLoader(0, null, this);
-
-
-                listView.setOnItemClickListener(new OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> listView, View view,
-                                                int position, long id) {
-                                // Get the cursor, positioned to the corresponding row in the result set
-                                Cursor cursor = (Cursor) listView.getItemAtPosition(position);
-
-                                // display the selected contact
-                                String contactNumber =
-                                        cursor.getString(cursor.getColumnIndexOrThrow(ContactsDb.KEY_PHONE));
-                                Toast.makeText(getApplicationContext(),
-                                        contactNumber, Toast.LENGTH_SHORT).show();
-
-                                String rowId =
-                                        cursor.getString(cursor.getColumnIndexOrThrow(ContactsDb.KEY_ROWID));
-
-                                // starts a new Intent to update/delete a Country
-                                // pass in row Id to create the Content URI for a single row
-                                Intent contactEdit = new Intent(getBaseContext(), ContactEdit.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("mode", "update");
-                                bundle.putString("rowId", rowId);
-                                contactEdit.putExtras(bundle);
-                                startActivity(contactEdit);
-
-                        }
-                });
 
         }
 
