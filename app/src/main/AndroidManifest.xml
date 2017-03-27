@@ -23,11 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".Database.ContactEdit" android:label="@string/app_name" />
+        <activity android:name=".Database.LogEdit" android:label="@string/app_name" />
 
-        <provider android:name=".Database.MyContentProvider" android:exported="true"
+        <provider android:name=".Database.LoggerContentProvider" android:exported="true"
             android:readPermission="true" android:writePermission="true"
-            android:authorities="com.as400samplecode.contentprovider" />
+            android:authorities="com.pblead26.contentprovider" />
     </application>
 
 </manifest>

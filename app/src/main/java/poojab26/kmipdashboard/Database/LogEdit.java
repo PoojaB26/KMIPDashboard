@@ -13,7 +13,7 @@ import poojab26.kmipdashboard.R;
  * Created by pblead26 on 26-Mar-17.
  */
 
-public class ContactEdit extends Activity implements View.OnClickListener {
+public class LogEdit extends Activity implements View.OnClickListener {
 
     private Button save;
     private String mode;
@@ -43,13 +43,13 @@ public class ContactEdit extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.save:
                 ContentValues values = new ContentValues();
-                values.put(ContactsDb.KEY_TIMESTAMP, 333);
-                values.put(ContactsDb.KEY_THREAD, "h");
-                values.put(ContactsDb.KEY_CLASSNAME, "j");
-                values.put(ContactsDb.KEY_FUNCTION, "k");
-                values.put(ContactsDb.KEY_LOGLEVEL, "j");
-                values.put(ContactsDb.KEY_LOGW, "k");
-                getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
+                values.put(LogsDb.KEY_TIMESTAMP, 333);
+                values.put(LogsDb.KEY_THREAD, "h");
+                values.put(LogsDb.KEY_CLASSNAME, "j");
+                values.put(LogsDb.KEY_FUNCTION, "k");
+                values.put(LogsDb.KEY_LOGLEVEL, "j");
+                values.put(LogsDb.KEY_LOGW, "k");
+                getContentResolver().insert(LoggerContentProvider.CONTENT_URI, values);
 
                 finish();
                 break;

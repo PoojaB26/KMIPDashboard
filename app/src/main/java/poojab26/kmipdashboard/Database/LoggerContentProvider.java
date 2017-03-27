@@ -13,9 +13,9 @@ import android.text.TextUtils;
  * Created by pblead26 on 26-Mar-17.
  */
 
-public class MyContentProvider extends ContentProvider {
+public class LoggerContentProvider extends ContentProvider {
 
-    private MyDatabaseHelper dbHelper;
+    private LogDatabaseHelper dbHelper;
 
     private static final int ALL_LOGS = 1;
     private static final int SINGLE_LOG = 2;
@@ -23,7 +23,7 @@ public class MyContentProvider extends ContentProvider {
     // authority is the symbolic name of your provider
     // To avoid conflicts with other providers, you should use
     // Internet domain ownership (in reverse) as the basis of your provider authority.
-    private static final String AUTHORITY = "com.as400samplecode.contentprovider";
+    private static final String AUTHORITY = "com.pblead26.contentprovider";
 
     // create content URIs from the authority by appending path to database table
     public static final Uri CONTENT_URI =
@@ -43,7 +43,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         // get access to the database helper
-        dbHelper = new MyDatabaseHelper(getContext());
+        dbHelper = new LogDatabaseHelper(getContext());
         return false;
     }
 
@@ -53,9 +53,9 @@ public class MyContentProvider extends ContentProvider {
 
         switch (uriMatcher.match(uri)) {
             case ALL_LOGS:
-                return "vnd.android.cursor.dir/vnd.com.as400samplecode.contentprovider.contacts";
+                return "vnd.android.cursor.dir/vnd.com.pblead26.contentprovider.logs";
             case SINGLE_LOG:
-                return "vnd.android.cursor.item/vnd.com.as400samplecode.contentprovider.contacts";
+                return "vnd.android.cursor.item/vnd.com.pblead26.contentprovider.logs";
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
@@ -76,7 +76,7 @@ public class MyContentProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        long id = db.insert(ContactsDb.SQLITE_TABLE, null, values);
+        long id = db.insert(LogsDb.SQLITE_TABLE, null, values);
         getContext().getContentResolver().notifyChange(uri, null);
         return Uri.parse(CONTENT_URI + "/" + id);
     }
@@ -93,7 +93,7 @@ public class MyContentProvider extends ContentProvider {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-        queryBuilder.setTables(ContactsDb.SQLITE_TABLE);
+        queryBuilder.setTables(LogsDb.SQLITE_TABLE);
 
         switch (uriMatcher.match(uri)) {
             case ALL_LOGS:
@@ -101,7 +101,7 @@ public class MyContentProvider extends ContentProvider {
                 break;
             case SINGLE_LOG:
                 String id = uri.getPathSegments().get(1);
-                queryBuilder.appendWhere(ContactsDb.KEY_ROWID + "=" + id);
+                queryBuilder.appendWhere(LogsDb.KEY_ROWID + "=" + id);
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
@@ -127,14 +127,14 @@ public class MyContentProvider extends ContentProvider {
                 break;
             case SINGLE_LOG:
                 String id = uri.getPathSegments().get(1);
-                selection = ContactsDb.KEY_ROWID + "=" + id
+                selection = LogsDb.KEY_ROWID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
                         " AND (" + selection + ')' : "");
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        int deleteCount = db.delete(ContactsDb.SQLITE_TABLE, selection, selectionArgs);
+        int deleteCount = db.delete(LogsDb.SQLITE_TABLE, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
         return deleteCount;
     }
@@ -152,14 +152,14 @@ public class MyContentProvider extends ContentProvider {
                 break;
             case SINGLE_LOG:
                 String id = uri.getPathSegments().get(1);
-                selection = ContactsDb.KEY_ROWID + "=" + id
+                selection = LogsDb.KEY_ROWID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
                         " AND (" + selection + ')' : "");
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        int updateCount = db.update(ContactsDb.SQLITE_TABLE, values, selection, selectionArgs);
+        int updateCount = db.update(LogsDb.SQLITE_TABLE, values, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
         return updateCount;
     }

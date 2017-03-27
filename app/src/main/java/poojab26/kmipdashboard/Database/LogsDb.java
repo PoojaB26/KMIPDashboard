@@ -7,7 +7,7 @@ import android.util.Log;
  * Created by pblead26 on 26-Mar-17.
  */
 
-public class ContactsDb {
+public class LogsDb {
     public static final String KEY_ROWID = "_id";
     public static final String KEY_TIMESTAMP = "timestamp";
     public static final String KEY_THREAD = "thread";

@@ -8,22 +8,22 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by pblead26 on 26-Mar-17.
  */
 
-public class MyDatabaseHelper extends SQLiteOpenHelper {
+public class LogDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Logs";
     private static final int DATABASE_VERSION = 1;
 
-    MyDatabaseHelper(Context context) {
+    LogDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        ContactsDb.onCreate(db);
+        LogsDb.onCreate(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        ContactsDb.onUpgrade(db, oldVersion, newVersion);
+        LogsDb.onUpgrade(db, oldVersion, newVersion);
     }
 }

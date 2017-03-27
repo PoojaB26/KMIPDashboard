@@ -23,7 +23,7 @@ import poojab26.kmipdashboard.R;
 
 public class MainActivity extends Activity implements
         LoaderManager.LoaderCallbacks<Cursor>{
-        private static final String AUTHORITY = "com.as400samplecode.contentprovider";
+        private static final String AUTHORITY = "com.pblead26.contentprovider";
 
         // create content URIs from the authority by appending path to database table
         public static final Uri URL =
@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements
 
                         public void onClick(View v) {
                                 // starts a new Intent to add a Country
-                                Intent contactEdit = new Intent(getBaseContext(), ContactEdit.class);
+                                Intent contactEdit = new Intent(getBaseContext(), LogEdit.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putString("mode", "add");
                                 contactEdit.putExtras(bundle);
@@ -64,12 +64,12 @@ public class MainActivity extends Activity implements
 
                 // The desired columns to be bound
                 String[] columns = new String[] {
-                        ContactsDb.KEY_TIMESTAMP,
-                        ContactsDb.KEY_THREAD,
-                        ContactsDb.KEY_CLASSNAME,
-                        ContactsDb.KEY_FUNCTION,
-                        ContactsDb.KEY_LOGLEVEL,
-                        ContactsDb.KEY_LOGW
+                        LogsDb.KEY_TIMESTAMP,
+                        LogsDb.KEY_THREAD,
+                        LogsDb.KEY_CLASSNAME,
+                        LogsDb.KEY_FUNCTION,
+                        LogsDb.KEY_LOGLEVEL,
+                        LogsDb.KEY_LOGW
                 };
 
                 // the XML defined views which the data will be bound to
@@ -105,15 +105,15 @@ public class MainActivity extends Activity implements
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
                 String[] projection = {
-                        ContactsDb.KEY_ROWID,
-                        ContactsDb.KEY_TIMESTAMP,
-                        ContactsDb.KEY_THREAD,
-                        ContactsDb.KEY_CLASSNAME,
-                        ContactsDb.KEY_FUNCTION,
-                        ContactsDb.KEY_LOGLEVEL,
-                        ContactsDb.KEY_LOGW};
+                        LogsDb.KEY_ROWID,
+                        LogsDb.KEY_TIMESTAMP,
+                        LogsDb.KEY_THREAD,
+                        LogsDb.KEY_CLASSNAME,
+                        LogsDb.KEY_FUNCTION,
+                        LogsDb.KEY_LOGLEVEL,
+                        LogsDb.KEY_LOGW};
                 CursorLoader cursorLoader = new CursorLoader(this,
-                        MyContentProvider.CONTENT_URI, projection, null, null, null);
+                        LoggerContentProvider.CONTENT_URI, projection, null, null, null);
                 return cursorLoader;
         }
 
