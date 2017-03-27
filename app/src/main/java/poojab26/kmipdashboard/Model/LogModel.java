@@ -12,9 +12,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class LogModel {
 
-    @SerializedName("timestamp")
+    @SerializedName("day")
     @Expose
-    private String timestamp;
+    private String day;
+    @SerializedName("time")
+    @Expose
+    private String time;
     @SerializedName("classname")
     @Expose
     private String classname;
@@ -28,22 +31,41 @@ public class LogModel {
     @Expose
     private String log;
 
+
+
+    @SerializedName("logFormat")
+    @Expose
+    private String logFormat;
+
     public LogModel(){};
-    public LogModel(String timestamp, String classname, String functionName, String logLevel, String log) {
+
+
+
+    public LogModel(String day, String time, String classname, String functionName, String logLevel, String log, String logFormat) {
         super();
-        this.timestamp = timestamp;
+        this.day = day;
+        this.time = time;
         this.classname = classname;
         this.functionName = functionName;
         this.logLevel = logLevel;
         this.log = log;
+        this.logFormat = logFormat;
+
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getDay() {
+        return day;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setDay(String day) {
+        this.day = day;
+    }
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getClassname() {
@@ -78,6 +100,13 @@ public class LogModel {
         this.log = log;
     }
 
+    public String getLogFormat() {
+        return logFormat;
+    }
+
+    public void setLogFormat(String logFormat) {
+        this.logFormat = logFormat;
+    }
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

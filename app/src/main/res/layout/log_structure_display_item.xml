@@ -23,7 +23,16 @@
             android:background="#ffffff"
             android:padding="5dp"
             android:orientation="vertical">
-            <TextView android:id="@+id/tvTimestamp"
+            <TextView android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DC7563"
+                android:text="Name"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView android:id="@+id/tvTime"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#DC7563"
@@ -40,7 +49,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PHONE"
+                    android:text="Thread"
                     android:id="@+id/tvThread"
                     android:textColor="#000000"
 
@@ -58,7 +67,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EMAIL"
+                    android:text="Classname"
                     android:id="@+id/tvClassname"
                     android:layout_marginLeft="8dp"
 
@@ -75,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PHONE"
+                    android:text="Function"
                     android:id="@+id/tvFunction"
                     android:textColor="#000000"
 
@@ -93,7 +102,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EMAIL"
+                    android:text="LogLevel"
                     android:id="@+id/tvLoglevel"
                     android:layout_marginLeft="8dp"
 
@@ -105,7 +114,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CATEGORY"
+                android:text="Log"
                 android:id="@+id/tvLogw"
                 android:textColor="#61909B"
                 android:textSize="10sp" />

@@ -9,7 +9,9 @@ import android.util.Log;
 
 public class LogsDb {
     public static final String KEY_ROWID = "_id";
-    public static final String KEY_TIMESTAMP = "timestamp";
+    public static final String KEY_DATE = "date";
+    public static final String KEY_TIME = "time";
+
     public static final String KEY_THREAD = "thread";
     public static final String KEY_CLASSNAME = "classname";
     public static final String KEY_FUNCTION = "function";
@@ -24,7 +26,8 @@ public class LogsDb {
     private static final String DATABASE_CREATE =
             "CREATE TABLE if not exists " + SQLITE_TABLE + " (" +
                     KEY_ROWID + " integer PRIMARY KEY autoincrement," +
-                    KEY_TIMESTAMP + "," +
+                    KEY_DATE + "," +
+                    KEY_TIME + "," +
                     KEY_THREAD + "," +
                     KEY_CLASSNAME + "," +
                     KEY_FUNCTION + "," +

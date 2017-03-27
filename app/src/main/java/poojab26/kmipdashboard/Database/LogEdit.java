@@ -22,7 +22,7 @@ public class LogEdit extends Activity {
         super.onCreate(savedInstanceState);
 
         ContentValues values = new ContentValues();
-        values.put(LogsDb.KEY_TIMESTAMP, 333);
+       // values.put(LogsDb.KEY_TIMESTAMP, 333);
         values.put(LogsDb.KEY_THREAD, "h");
         values.put(LogsDb.KEY_CLASSNAME, "j");
         values.put(LogsDb.KEY_FUNCTION, "k");

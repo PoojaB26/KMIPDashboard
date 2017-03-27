@@ -61,7 +61,8 @@ public class MainActivity extends Activity implements
 
                 // The desired columns to be bound
                 String[] columns = new String[] {
-                        LogsDb.KEY_TIMESTAMP,
+                        LogsDb.KEY_DATE,
+                        LogsDb.KEY_TIME,
                         LogsDb.KEY_THREAD,
                         LogsDb.KEY_CLASSNAME,
                         LogsDb.KEY_FUNCTION,
@@ -71,7 +72,8 @@ public class MainActivity extends Activity implements
 
                 // the XML defined views which the data will be bound to
                 int[] to = new int[] {
-                        R.id.tvTimestamp,
+                        R.id.tvDate,
+                        R.id.tvTime,
                         R.id.tvThread,
                         R.id.tvClassname,
                         R.id.tvFunction,
@@ -103,14 +105,15 @@ public class MainActivity extends Activity implements
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
                 String[] projection = {
                         LogsDb.KEY_ROWID,
-                        LogsDb.KEY_TIMESTAMP,
+                        LogsDb.KEY_DATE,
+                        LogsDb.KEY_TIME,
                         LogsDb.KEY_THREAD,
                         LogsDb.KEY_CLASSNAME,
                         LogsDb.KEY_FUNCTION,
                         LogsDb.KEY_LOGLEVEL,
                         LogsDb.KEY_LOGW};
-                String selection = LogsDb.KEY_TIMESTAMP + "=?";
-                String[] selectionArgs = {"Dec 13, 2016 11:02:16 AM"};
+                String selection = LogsDb.KEY_DATE + "=?";
+                String[] selectionArgs = {"Dec 13, 2016"};
                 CursorLoader cursorLoader = new CursorLoader(this,
                         LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, "function");
                 return cursorLoader;

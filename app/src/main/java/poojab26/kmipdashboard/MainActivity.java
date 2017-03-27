@@ -26,6 +26,7 @@ import poojab26.kmipdashboard.Model.LogModel;
 public class MainActivity extends AppCompatActivity {
     String FullMatch = "";
     String Date = "";
+    String Time = "";
     String Thread = "";
     String className = "";
     String functionName = "";
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         String testString = readFromFile(getApplicationContext());
         findMatch(testString);
-        stringToObjects();
+        //stringToObjects();
     }
 
 
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         String test;
 
         // Pattern to find code
-        String pattern = "([A-Za-z]{3} \\d+, \\d* .{8} (AM|PM)) (Thread\\[.*\\]) (com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST)\n{0,1}:)(.*\n)";  // Sequence of 8 digits
+        String pattern = "([A-Za-z]{3} \\d+, \\d*)( .{8} (AM|PM)) (Thread\\[.*\\]) (com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST){0,1}:)(.*)";
         Pattern regEx = Pattern.compile(pattern);
 
         // Find instance of pattern matches
@@ -115,11 +116,12 @@ public class MainActivity extends AppCompatActivity {
             test = m.group();
             FullMatch = m.group(0);
             Date = m.group(1);
-            Thread = m.group(3);
-            className = m.group(4);
-            functionName = m.group(6);
-            logLevel = m.group(7);
-            LogW = m.group(8);
+            Time = m.group(2);
+            Thread = m.group(4);
+            className = m.group(5);
+            functionName = m.group(7);
+            logLevel = m.group(8);
+            LogW = m.group(9);
 
             Log.d("TeST", test);
 
@@ -128,10 +130,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d("functionName", functionName);
             Log.d("className", className);
             Log.d("Thread", Thread);
-            Log.d("Date", Date);
+            Log.d("Day", Date);
+            Log.d("Day", Time);
+
 
             ContentValues values = new ContentValues();
-            values.put(LogsDb.KEY_TIMESTAMP, Date);
+            values.put(LogsDb.KEY_DATE, Date);
+            values.put(LogsDb.KEY_TIME, Time);
             values.put(LogsDb.KEY_THREAD, Thread);
             values.put(LogsDb.KEY_CLASSNAME, className);
             values.put(LogsDb.KEY_FUNCTION, functionName);
@@ -145,9 +150,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void stringToObjects(){
+    public void stringToObjects() {
         LogModel logModel = new LogModel();
-        logModel.setTimestamp(Date.toString());
+        //  logModel.setDay(Date.toString());
         logModel.setClassname(className);
         logModel.setFunctionName(functionName);
         logModel.setLogLevel(logLevel);
@@ -161,24 +166,26 @@ public class MainActivity extends AppCompatActivity {
 
         String logFormat = "";
         String logString = logModel.getLog();
-        String pattern = "(Tag: Response Message|Tag:Request Message)";  // Sequence of 8 digits
-        Pattern regEx = Pattern.compile(pattern);
+        String formatPattern = "(Tag: Response Message|Tag:Request Message)";  // Sequence of 8 digits
+        Pattern regEx = Pattern.compile(formatPattern);
 
         // Find instance of pattern matches
         Matcher m = regEx.matcher(logString);
         if (m.find()) {
-          //  FullMatch = m.group(0);
+            //  FullMatch = m.group(0);
             logFormat = m.group(1);
 
 
-
         }
-        if(logFormat.equalsIgnoreCase("Tag: Response Message"))
+        if (logFormat.equalsIgnoreCase("Tag: Response Message")) {
             System.out.println("ITS A RESPONSE");
-        else
+            logModel.setLogFormat("Response");
+        } else {
             System.out.println("REQUEST");
+            logModel.setLogFormat("Request");
+        }
+
         Log.d("logFormat", logFormat);
     }
-
 
 }
