@@ -31,7 +31,7 @@ public class DashboardActivity extends Activity implements
         @Override
         public void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
-                setContentView(R.layout.activity_main);
+                setContentView(R.layout.activity_dashboard);
 
                 displayListView();
                 Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);

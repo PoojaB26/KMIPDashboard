@@ -17,7 +17,7 @@ public class DashboardActivityTesttttt extends Activity {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.table);
         TableLayout table = (TableLayout) findViewById(R.id.myTableLayout);
         for (int i = 0; i < 5; i++) {
 
