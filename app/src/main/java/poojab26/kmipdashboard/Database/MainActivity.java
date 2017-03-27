@@ -109,8 +109,10 @@ public class MainActivity extends Activity implements
                         LogsDb.KEY_FUNCTION,
                         LogsDb.KEY_LOGLEVEL,
                         LogsDb.KEY_LOGW};
+                String selection = LogsDb.KEY_TIMESTAMP + "=?";
+                String[] selectionArgs = {"Dec 13, 2016 11:02:16 AM"};
                 CursorLoader cursorLoader = new CursorLoader(this,
-                        LoggerContentProvider.CONTENT_URI, projection, null, null, null);
+                        LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, "function");
                 return cursorLoader;
         }
 
