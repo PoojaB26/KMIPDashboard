@@ -9,10 +9,14 @@ import android.util.Log;
 
 public class ContactsDb {
     public static final String KEY_ROWID = "_id";
-    public static final String KEY_PHONE = "phone";
-    public static final String KEY_NAME = "name";
-    public static final String KEY_CATEGORY = "categ";
-    public static final String KEY_EMAIL = "email";
+    public static final String KEY_TIMESTAMP = "timestamp";
+    public static final String KEY_THREAD = "thread";
+    public static final String KEY_CLASSNAME = "classname";
+    public static final String KEY_FUNCTION = "function";
+    public static final String KEY_LOGLEVEL = "loglevel";
+    public static final String KEY_LOGW = "logw";
+
+
 
     private static final String LOG_TAG = "ContactsDb";
     public static final String SQLITE_TABLE = "Contact";
@@ -20,11 +24,13 @@ public class ContactsDb {
     private static final String DATABASE_CREATE =
             "CREATE TABLE if not exists " + SQLITE_TABLE + " (" +
                     KEY_ROWID + " integer PRIMARY KEY autoincrement," +
-                    KEY_PHONE + "," +
-                    KEY_NAME + "," +
-                    KEY_CATEGORY + "," +
-                    KEY_EMAIL + "," +
-                    " UNIQUE (" + KEY_PHONE +"));";
+                    KEY_TIMESTAMP + "," +
+                    KEY_THREAD + "," +
+                    KEY_CLASSNAME + "," +
+                    KEY_FUNCTION + "," +
+                    KEY_LOGLEVEL + "," +
+                    KEY_LOGW + "," +
+                    " UNIQUE (" + KEY_TIMESTAMP +"));";
 
     public static void onCreate(SQLiteDatabase db) {
         Log.w(LOG_TAG, DATABASE_CREATE);

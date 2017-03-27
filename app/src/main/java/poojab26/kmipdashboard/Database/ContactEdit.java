@@ -43,10 +43,12 @@ public class ContactEdit extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.save:
                 ContentValues values = new ContentValues();
-                values.put(ContactsDb.KEY_PHONE, 333);
-                values.put(ContactsDb.KEY_NAME, "h");
-                values.put(ContactsDb.KEY_CATEGORY, "j");
-                values.put(ContactsDb.KEY_EMAIL, "k");
+                values.put(ContactsDb.KEY_TIMESTAMP, 333);
+                values.put(ContactsDb.KEY_THREAD, "h");
+                values.put(ContactsDb.KEY_CLASSNAME, "j");
+                values.put(ContactsDb.KEY_FUNCTION, "k");
+                values.put(ContactsDb.KEY_LOGLEVEL, "j");
+                values.put(ContactsDb.KEY_LOGW, "k");
                 getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
 
                 finish();

@@ -11,10 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Spinner;
 
 import poojab26.kmipdashboard.R;
 
@@ -26,11 +24,7 @@ import poojab26.kmipdashboard.R;
 public class MainActivity extends Activity implements
         LoaderManager.LoaderCallbacks<Cursor>{
         private static final String AUTHORITY = "com.as400samplecode.contentprovider";
-        private Spinner categoryList;
-        private Button save, delete;
-        private String mode;
-        private EditText phone, name, email;
-        private String id;
+
         // create content URIs from the authority by appending path to database table
         public static final Uri URL =
                 Uri.parse("content://" + AUTHORITY + "/contacts");
@@ -70,18 +64,23 @@ public class MainActivity extends Activity implements
 
                 // The desired columns to be bound
                 String[] columns = new String[] {
-                        ContactsDb.KEY_PHONE,
-                        ContactsDb.KEY_NAME,
-                        ContactsDb.KEY_EMAIL,
-                        ContactsDb.KEY_CATEGORY
+                        ContactsDb.KEY_TIMESTAMP,
+                        ContactsDb.KEY_THREAD,
+                        ContactsDb.KEY_CLASSNAME,
+                        ContactsDb.KEY_FUNCTION,
+                        ContactsDb.KEY_LOGLEVEL,
+                        ContactsDb.KEY_LOGW
                 };
 
                 // the XML defined views which the data will be bound to
                 int[] to = new int[] {
-                        R.id.tvPhone,
-                        R.id.tvname,
-                        R.id.tvemail,
-                        R.id.tvCate,
+                        R.id.tvTimestamp,
+                        R.id.tvThread,
+                        R.id.tvClassname,
+                        R.id.tvFunction,
+                        R.id.tvLoglevel,
+                        R.id.tvLogw,
+
                 };
 
                 // create an adapter from the SimpleCursorAdapter
@@ -107,10 +106,12 @@ public class MainActivity extends Activity implements
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
                 String[] projection = {
                         ContactsDb.KEY_ROWID,
-                        ContactsDb.KEY_PHONE,
-                        ContactsDb.KEY_NAME,
-                        ContactsDb.KEY_CATEGORY,
-                        ContactsDb.KEY_EMAIL};
+                        ContactsDb.KEY_TIMESTAMP,
+                        ContactsDb.KEY_THREAD,
+                        ContactsDb.KEY_CLASSNAME,
+                        ContactsDb.KEY_FUNCTION,
+                        ContactsDb.KEY_LOGLEVEL,
+                        ContactsDb.KEY_LOGW};
                 CursorLoader cursorLoader = new CursorLoader(this,
                         MyContentProvider.CONTENT_URI, projection, null, null, null);
                 return cursorLoader;

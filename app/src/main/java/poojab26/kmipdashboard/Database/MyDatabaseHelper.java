@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Contacts";
+    private static final String DATABASE_NAME = "Logs";
     private static final int DATABASE_VERSION = 1;
 
     MyDatabaseHelper(Context context) {

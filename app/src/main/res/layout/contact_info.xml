@@ -23,7 +23,7 @@
             android:background="#ffffff"
             android:padding="5dp"
             android:orientation="vertical">
-            <TextView android:id="@+id/tvname"
+            <TextView android:id="@+id/tvTimestamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#DC7563"
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PHONE"
-                    android:id="@+id/tvPhone"
+                    android:id="@+id/tvThread"
                     android:textColor="#000000"
 
                     android:layout_marginRight="8dp"
@@ -59,18 +59,54 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="EMAIL"
-                    android:id="@+id/tvemail"
+                    android:id="@+id/tvClassname"
                     android:layout_marginLeft="8dp"
 
                     android:textSize="13sp"
                     />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHONE"
+                    android:id="@+id/tvFunction"
+                    android:textColor="#000000"
+
+                    android:layout_marginRight="8dp"
+                    android:textSize="13sp"
+
+                    />
+
+                <View
+                    android:layout_width="0.8dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:background="#001111"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMAIL"
+                    android:id="@+id/tvLoglevel"
+                    android:layout_marginLeft="8dp"
+
+                    android:textSize="13sp"
+                    />
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CATEGORY"
-                android:id="@+id/tvCate"
+                android:id="@+id/tvLogw"
                 android:textColor="#61909B"
                 android:textSize="10sp" />
         </LinearLayout>
