@@ -7,8 +7,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import poojab26.kmipdashboard.R;
-
 /**
  * Created by pblead26 on 26-Mar-17.
  */
@@ -22,7 +20,6 @@ public class LogEdit extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.contact_detail_page);
 
         ContentValues values = new ContentValues();
         values.put(LogsDb.KEY_TIMESTAMP, 333);

@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements
                 // create an adapter from the SimpleCursorAdapter
                 dataAdapter = new SimpleCursorAdapter(
                         this,
-                        R.layout.contact_info,
+                        R.layout.log_structure_display_item,
                         null,
                         columns,
                         to,

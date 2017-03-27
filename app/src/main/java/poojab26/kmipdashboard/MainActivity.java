@@ -37,24 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-       // jsonString = (TextView)findViewById(R.id.jsonString);
         String testString = readFromFile(getApplicationContext());
-//        findMatch("Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Utils createPreparedStatement(sql) FINER: ENTRY INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?) Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory getConnection() FINER: ENTRY");
-      /*  findMatch("Dec 13, 2016 11:02:16 AM \n" +
-                "Thread[pool-6-thread-9,5,main]\n" +
-                "com.ibm.tklm.server.db.dao.jdbc.Utils \n" +
-                "createPreparedStatement(sql)\n" +
-                "FINER: ENTRY INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?)\n" +
-                "\n" +
-                "Dec 13, 2016 11:02:16 AM \n" +
-                "Thread[pool-6-thread-9,5,main] \n" +
-                "com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory \n" +
-                "getConnection()\n" +
-                "FINER: ENTRY");
-*/
         findMatch(testString);
         stringToObjects();
     }
@@ -120,9 +103,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void findMatch(String myString) {
 
-
-
-        String test = new String();
+        String test;
 
         // Pattern to find code
         String pattern = "([A-Za-z]{3} \\d+, \\d* .{8} (AM|PM)) (Thread\\[.*\\]) (com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST)\n{0,1}:)(.*\n)";  // Sequence of 8 digits
