@@ -1,5 +1,6 @@
 package poojab26.kmipdashboard;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,6 +10,12 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,28 +30,64 @@ public class MainActivity extends AppCompatActivity {
     String functionName = "";
     String logLevel = "";
     String LogW = "";
+    String stringFromFile = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        jsonString = (TextView)findViewById(R.id.jsonString);
-        findMatch(" Dec 15, 2016 12:28:20 PM Thread[pool-6-thread-3,5,main] com.ibm.tklm.kmip.stub.SSLRequestProcessor run ALL: Response message: KMIPMessage: Tag: Response Message (0x42007B), Type: Structure (0x01), Data: \n" +
-                "  Tag: Response Header (0x42007A), Type: Structure (0x01), Data: \n" +
-                "    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data: \n" +
-                "      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x00000001 (1)\n" +
-                "      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x00000002 (2)\n" +
-                "    Tag: Time Stamp (0x420092), Type: Date-Time (0x09), Data: 0x0000000058533524 (Thu Dec 15 12:28:20 GMT-12:00 2016)\n" +
-                "    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x00000001 (1)\n" +
-                "  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data: \n" +
-                "    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000014 (Destroy)\n" +
-                "    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x00000000 (Success)\n" +
-                "    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data: \n" +
-                "      Tag: Unique Identifier (0x420094), Type: Text String (0x07), Data: KEY-ddd2652-382a0081-613e-4758-a9a5-44fdc1212f2f\n");
+       // jsonString = (TextView)findViewById(R.id.jsonString);
+        String testString = readFromFile(getApplicationContext());
+//        findMatch("Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Utils createPreparedStatement(sql) FINER: ENTRY INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?) Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory getConnection() FINER: ENTRY");
+      /*  findMatch("Dec 13, 2016 11:02:16 AM \n" +
+                "Thread[pool-6-thread-9,5,main]\n" +
+                "com.ibm.tklm.server.db.dao.jdbc.Utils \n" +
+                "createPreparedStatement(sql)\n" +
+                "FINER: ENTRY INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?)\n" +
+                "\n" +
+                "Dec 13, 2016 11:02:16 AM \n" +
+                "Thread[pool-6-thread-9,5,main] \n" +
+                "com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory \n" +
+                "getConnection()\n" +
+                "FINER: ENTRY");
+*/
+        findMatch(testString);
         stringToObjects();
     }
 
 
+    private String readFromFile(Context context) {
+    Log.d("HERE", "i am here");
 
+        try {
+            InputStream inputStream = getAssets().open("config.txt");
+            Reader reader = new InputStreamReader(inputStream, "UTF-8");
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString + "\n");
+                }
+
+                inputStream.close();
+                stringFromFile = stringBuilder.toString();
+                Log.d("HELLO", stringFromFile);
+
+                System.out.println(stringFromFile);
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        }
+
+        return stringFromFile;
+    }
     private void jsonSTuff(){
 
         String json = "{\n" +
@@ -75,32 +118,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        String test = new String();
 
         // Pattern to find code
-        String pattern = "([A-Za-z]{3} [1-31]*, \\d{4} \\d{2}:\\d{2}:\\d{2} AM|PM) (Thread\\[.*\\]) (com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST)):(.*)";  // Sequence of 8 digits
+        String pattern = "([A-Za-z]{3} \\d+, \\d* .{8} (AM|PM)) (Thread\\[.*\\]) (com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST)\n{0,1}:)(.*\n)";  // Sequence of 8 digits
         Pattern regEx = Pattern.compile(pattern);
 
         // Find instance of pattern matches
         Matcher m = regEx.matcher(myString);
-        if (m.find()) {
+        while (m.find()) {
+            test = m.group();
             FullMatch = m.group(0);
             Date = m.group(1);
-            Thread = m.group(2);
-            className = m.group(3);
-            functionName = m.group(5);
-            logLevel = m.group(6);
-            LogW = m.group(7);
+            Thread = m.group(3);
+            className = m.group(4);
+            functionName = m.group(6);
+            logLevel = m.group(7);
+            LogW = m.group(8);
 
+            Log.d("TeST", test);
 
-
+            Log.d("LogW", LogW);
+            Log.d("LogLevel", logLevel);
+            Log.d("functionName", functionName);
+            Log.d("className", className);
+            Log.d("Thread", Thread);
+            Log.d("Date", Date);
         }
-        Log.d("LogW", LogW);
-        Log.d("LogLevel", logLevel);
-        Log.d("functionName", functionName);
-        Log.d("className", className);
-        Log.d("Thread", Thread);
-        Log.d("Date", Date);
+
 
     }
 
