@@ -42,10 +42,7 @@ public class MainActivity extends Activity implements
 
                         public void onClick(View v) {
                                 // starts a new Intent to add a Country
-                                Intent contactEdit = new Intent(getBaseContext(), LogEdit.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("mode", "add");
-                                contactEdit.putExtras(bundle);
+                                Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
                                 startActivity(contactEdit);
                         }
                 });

@@ -1,10 +1,10 @@
 package poojab26.kmipdashboard;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -19,10 +19,11 @@ import java.io.Reader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import poojab26.kmipdashboard.Database.LoggerContentProvider;
+import poojab26.kmipdashboard.Database.LogsDb;
 import poojab26.kmipdashboard.Model.LogModel;
 
 public class MainActivity extends AppCompatActivity {
-    TextView jsonString;
     String FullMatch = "";
     String Date = "";
     String Thread = "";
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
        // jsonString = (TextView)findViewById(R.id.jsonString);
         String testString = readFromFile(getApplicationContext());
 //        findMatch("Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Utils createPreparedStatement(sql) FINER: ENTRY INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?) Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory getConnection() FINER: ENTRY");
@@ -144,6 +148,17 @@ public class MainActivity extends AppCompatActivity {
             Log.d("className", className);
             Log.d("Thread", Thread);
             Log.d("Date", Date);
+
+            ContentValues values = new ContentValues();
+            values.put(LogsDb.KEY_TIMESTAMP, Date);
+            values.put(LogsDb.KEY_THREAD, Thread);
+            values.put(LogsDb.KEY_CLASSNAME, className);
+            values.put(LogsDb.KEY_FUNCTION, functionName);
+            values.put(LogsDb.KEY_LOGLEVEL, logLevel);
+            values.put(LogsDb.KEY_LOGW, LogW);
+            getContentResolver().insert(LoggerContentProvider.CONTENT_URI, values);
+            Log.d("Added", LogsDb.KEY_ROWID);
+            finish();
         }
 
 
@@ -161,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
 
         System.out.println(gson.toJson(logModel));
-        jsonString.setText(gson.toJson(logModel));
+        //jsonString.setText(gson.toJson(logModel));
 
         String logFormat = "";
         String logString = logModel.getLog();
