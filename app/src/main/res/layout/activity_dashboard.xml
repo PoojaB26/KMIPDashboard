@@ -1,57 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/myTableLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:shrinkColumns="*"
-    android:stretchColumns="*">
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:gravity="center_horizontal">
-        <TextView
-            android:id="@+id/textView9"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:scrollbars="vertical">
+
+
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/myTableLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:typeface="serif"
-            android:textSize="18dp"
-            android:text="Weather Table"
-            android:gravity="center"
-            android:layout_span="6"></TextView>
-    </TableRow>
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+            android:layout_height="match_parent"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
 
-        <TextView
-            android:id="@+id/TextView04"
-            android:text="Feb 7"
-            android:textStyle="bold"
-            android:typeface="serif"></TextView>
-        <TextView
-            android:id="@+id/TextView03"
-            android:text="Feb 8"
-            android:textStyle="bold"
-            android:typeface="serif"></TextView>
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
 
-    </TableRow>
-    <TableRow
-        android:layout_height="wrap_content"
-        android:id="@+id/mainRow"
-        android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/TextView04"
+                    android:text="Feb 7"
+                    android:textStyle="bold"
+                    android:typeface="serif"></TextView>
+                <TextView
+                    android:id="@+id/TextView03"
+                    android:text="Feb 8"
+                    android:textStyle="bold"
+                    android:typeface="serif"></TextView>
 
-        <TextView
-            android:id="@+id/one"
-            android:text="28°F"
-            android:gravity="center_horizontal"></TextView>
-        <TextView
-            android:text="26°F"
-            android:id="@+id/two"
-            android:gravity="center_horizontal"></TextView>
+            </TableRow>
+            <TableRow
+                android:layout_height="wrap_content"
+                android:id="@+id/mainRow"
+                android:layout_width="match_parent">
 
-    </TableRow>
-</TableLayout>
+                <TextView
+                    android:id="@+id/one"
+                    android:text="28°F"
+                    android:gravity="center_horizontal"></TextView>
+                <TextView
+                    android:text="26°F"
+                    android:id="@+id/two"
+                    android:gravity="center_horizontal"></TextView>
+
+            </TableRow>
+        </TableLayout>
+
+
+</ScrollView>
