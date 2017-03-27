@@ -6,7 +6,11 @@
     android:orientation="vertical"
     android:weightSum="10">
 
-
+<Button
+    android:id="@+id/btnFilter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="FILTER"/>
     <ListView android:id="@+id/contactList"
         android:layout_weight="8.5"
 

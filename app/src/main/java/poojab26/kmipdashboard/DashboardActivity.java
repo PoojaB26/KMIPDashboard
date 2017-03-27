@@ -8,6 +8,8 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -27,12 +29,20 @@ public class DashboardActivity extends Activity implements
         public static final Uri URL =
                 Uri.parse("content://" + AUTHORITY + "/logs");
         private SimpleCursorAdapter dataAdapter;
+        Button filter;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_dashboard);
-
+                filter = (Button)findViewById(R.id.btnFilter);
+                filter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                                Intent filterLog = new Intent(getBaseContext(),Activity_Date.class);
+                                startActivity(filterLog);
+                        }
+                });
                 displayListView();
                 Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
                 startActivity(contactEdit);
