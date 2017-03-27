@@ -27,7 +27,7 @@ public class MainActivity extends Activity implements
 
         // create content URIs from the authority by appending path to database table
         public static final Uri URL =
-                Uri.parse("content://" + AUTHORITY + "/contacts");
+                Uri.parse("content://" + AUTHORITY + "/logs");
         private SimpleCursorAdapter dataAdapter;
 
         @Override

@@ -18,8 +18,8 @@ public class ContactsDb {
 
 
 
-    private static final String LOG_TAG = "ContactsDb";
-    public static final String SQLITE_TABLE = "Contact";
+    private static final String LOG_TAG = "LogsDb";
+    public static final String SQLITE_TABLE = "Logger";
 
     private static final String DATABASE_CREATE =
             "CREATE TABLE if not exists " + SQLITE_TABLE + " (" +
@@ -30,7 +30,7 @@ public class ContactsDb {
                     KEY_FUNCTION + "," +
                     KEY_LOGLEVEL + "," +
                     KEY_LOGW + "," +
-                    " UNIQUE (" + KEY_TIMESTAMP +"));";
+                    " UNIQUE (" + KEY_ROWID +"));";
 
     public static void onCreate(SQLiteDatabase db) {
         Log.w(LOG_TAG, DATABASE_CREATE);

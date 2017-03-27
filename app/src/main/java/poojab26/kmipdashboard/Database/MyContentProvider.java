@@ -17,8 +17,8 @@ public class MyContentProvider extends ContentProvider {
 
     private MyDatabaseHelper dbHelper;
 
-    private static final int ALL_CONTACTS = 1;
-    private static final int SINGLE_CONTACT = 2;
+    private static final int ALL_LOGS = 1;
+    private static final int SINGLE_LOG = 2;
 
     // authority is the symbolic name of your provider
     // To avoid conflicts with other providers, you should use
@@ -27,7 +27,7 @@ public class MyContentProvider extends ContentProvider {
 
     // create content URIs from the authority by appending path to database table
     public static final Uri CONTENT_URI =
-            Uri.parse("content://" + AUTHORITY + "/contacts");
+            Uri.parse("content://" + AUTHORITY + "/logs");
 
     // a content URI pattern matches content URIs using wildcard characters:
     // *: Matches a string of any valid characters of any length.
@@ -35,8 +35,8 @@ public class MyContentProvider extends ContentProvider {
     private static final UriMatcher uriMatcher;
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(AUTHORITY, "contacts", ALL_CONTACTS);
-        uriMatcher.addURI(AUTHORITY, "contacts/#", SINGLE_CONTACT);
+        uriMatcher.addURI(AUTHORITY, "logs", ALL_LOGS);
+        uriMatcher.addURI(AUTHORITY, "logs/#", SINGLE_LOG);
     }
 
     // system calls onCreate() when it starts up the provider.
@@ -52,9 +52,9 @@ public class MyContentProvider extends ContentProvider {
     public String getType(Uri uri) {
 
         switch (uriMatcher.match(uri)) {
-            case ALL_CONTACTS:
+            case ALL_LOGS:
                 return "vnd.android.cursor.dir/vnd.com.as400samplecode.contentprovider.contacts";
-            case SINGLE_CONTACT:
+            case SINGLE_LOG:
                 return "vnd.android.cursor.item/vnd.com.as400samplecode.contentprovider.contacts";
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
@@ -70,7 +70,7 @@ public class MyContentProvider extends ContentProvider {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         switch (uriMatcher.match(uri)) {
-            case ALL_CONTACTS:
+            case ALL_LOGS:
                 //do nothing
                 break;
             default:
@@ -96,10 +96,10 @@ public class MyContentProvider extends ContentProvider {
         queryBuilder.setTables(ContactsDb.SQLITE_TABLE);
 
         switch (uriMatcher.match(uri)) {
-            case ALL_CONTACTS:
+            case ALL_LOGS:
                 //do nothing
                 break;
-            case SINGLE_CONTACT:
+            case SINGLE_LOG:
                 String id = uri.getPathSegments().get(1);
                 queryBuilder.appendWhere(ContactsDb.KEY_ROWID + "=" + id);
                 break;
@@ -122,10 +122,10 @@ public class MyContentProvider extends ContentProvider {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         switch (uriMatcher.match(uri)) {
-            case ALL_CONTACTS:
+            case ALL_LOGS:
                 //do nothing
                 break;
-            case SINGLE_CONTACT:
+            case SINGLE_LOG:
                 String id = uri.getPathSegments().get(1);
                 selection = ContactsDb.KEY_ROWID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
@@ -147,10 +147,10 @@ public class MyContentProvider extends ContentProvider {
                       String[] selectionArgs) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         switch (uriMatcher.match(uri)) {
-            case ALL_CONTACTS:
+            case ALL_LOGS:
                 //do nothing
                 break;
-            case SINGLE_CONTACT:
+            case SINGLE_LOG:
                 String id = uri.getPathSegments().get(1);
                 selection = ContactsDb.KEY_ROWID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
