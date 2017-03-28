@@ -8,9 +8,9 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -33,7 +33,7 @@ public class FilterActivityDate extends Activity implements
             Uri.parse("content://" + AUTHORITY + "/logs");
     private SimpleCursorAdapter dataAdapter;
     String MY_PREFS_NAME = "DatePicker", FilteredDate = "";
-    Button filter;
+    FloatingActionButton filter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class FilterActivityDate extends Activity implements
         startActivity(contactEdit);
 
 
-        filter = (Button) findViewById(R.id.btnFilter);
+        filter = (FloatingActionButton) findViewById(R.id.fabFilter);
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,9 +8,9 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -34,7 +34,7 @@ public class FilterActivityLogLevel extends Activity implements
     private SimpleCursorAdapter dataAdapter;
     String MY_PREFS_NAME = "DatePicker";
     String FilteredLevel = "";
-    Button filter;
+    FloatingActionButton filter;
     String[] logLevel ={"ALL:", "FINER:", "FINEST:"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class FilterActivityLogLevel extends Activity implements
         startActivity(contactEdit);
 
 
-        filter = (Button) findViewById(R.id.btnFilter);
+        filter = (FloatingActionButton) findViewById(R.id.fabFilter);
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

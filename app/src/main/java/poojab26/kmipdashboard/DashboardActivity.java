@@ -8,8 +8,8 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -30,13 +30,13 @@ public class DashboardActivity extends Activity implements
     public static final Uri URL =
             Uri.parse("content://" + AUTHORITY + "/logs");
     private SimpleCursorAdapter dataAdapter;
-    Button filter;
+    FloatingActionButton filter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        filter = (Button) findViewById(R.id.btnFilter);
+        filter = (FloatingActionButton) findViewById(R.id.fabFilter);
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
