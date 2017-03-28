@@ -28,6 +28,7 @@
         <activity android:name=".Filter.Activity_Date"></activity>
         <activity android:name=".Filter.FilterActivityDate"></activity>
         <activity android:name=".Filter.FilterActivity"></activity>
+        <activity android:name=".Filter.FilterActivityLogLevel"></activity>
 
         <provider android:name=".Database.LoggerContentProvider" android:exported="true"
             android:readPermission="true" android:writePermission="true"

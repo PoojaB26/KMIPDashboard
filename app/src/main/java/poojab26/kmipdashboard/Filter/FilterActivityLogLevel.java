@@ -8,7 +8,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,7 +22,7 @@ import poojab26.kmipdashboard.R;
  * Created by pblead26 on 26-Mar-17.
  */
 
-public class FilterActivityDate extends Activity implements
+public class FilterActivityLogLevel extends Activity implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final String AUTHORITY = "com.pblead26.contentprovider";
 
@@ -33,19 +32,19 @@ public class FilterActivityDate extends Activity implements
     private SimpleCursorAdapter dataAdapter;
     String MY_PREFS_NAME = "DatePicker", FilteredDate = "";
     Button filter;
-
+    String[] logLevel ={"ALL:", "FINER:", "FINEST:"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        FilteredDate = getIntent().getExtras().getString("DATE");
+      /*  FilteredDate = getIntent().getExtras().getString("DATE");
 
-              /*  SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+              *//*  SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
                 String restoredText = prefs.getString("text", null);
                 if (restoredText != null) {
                         FilteredDate = prefs.getString("Date", "No name defined");//"No name defined" is the default value.
-                }*/
-        Log.d("picked", FilteredDate);
+                }*//*
+        Log.d("picked", FilteredDate);*/
         displayListView();
         Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
         startActivity(contactEdit);
@@ -127,9 +126,8 @@ public class FilterActivityDate extends Activity implements
                 LogsDb.KEY_LOGW};
 
 
-        String selection = LogsDb.KEY_DATE + "=?";
-        String[] selectionArgs = {FilteredDate};
-        Log.d("Datepicked", FilteredDate);
+        String selection = LogsDb.KEY_LOGLEVEL + "=?";
+        String[] selectionArgs = {logLevel[1]};
         CursorLoader cursorLoader = new CursorLoader(this,
                 LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, "function");
         return cursorLoader;

@@ -33,6 +33,13 @@ public class FilterActivity extends Activity {
             }
         });
 
+        filterLogLevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent filterLogLevel= new Intent(getBaseContext(),FilterActivityLogLevel.class);
+                startActivity(filterLogLevel);
+            }
+        });
 
 
     }
