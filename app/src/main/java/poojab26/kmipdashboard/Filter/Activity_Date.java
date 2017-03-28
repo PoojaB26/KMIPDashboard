@@ -2,7 +2,6 @@ package poojab26.kmipdashboard.Filter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +36,7 @@ public class Activity_Date extends Activity {
                // textview1.setText(getCurrentDate());
 
                 Intent filterByDate = new Intent(getBaseContext(),FilterActivityDate.class);
+                filterByDate.putExtra("DATE", getCurrentDate());
                 startActivity(filterByDate);
             }
 
@@ -71,14 +71,14 @@ public class Activity_Date extends Activity {
             case 12: month = "Dec";
                 break;
         }
-        builder.append("Current Date: ");
+//        builder.append("Current Date: ");
         builder.append(month+" ");
         builder.append(picker.getDayOfMonth()+", ");
         builder.append(picker.getYear());
 
-        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+      /*  SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("Date", builder.toString());
-        editor.commit();
+        editor.commit();*/
 
         return builder.toString();
     }

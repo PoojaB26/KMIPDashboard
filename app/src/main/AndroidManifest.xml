@@ -25,7 +25,9 @@
             </intent-filter>-->
         </activity>
         <activity android:name=".Database.LogEdit" android:label="@string/app_name" />
-        <activity android:name=".Activity_Date"></activity>
+        <activity android:name=".Filter.Activity_Date"></activity>
+        <activity android:name=".Filter.FilterActivityDate"></activity>
+        <activity android:name=".Filter.FilterActivity"></activity>
 
         <provider android:name=".Database.LoggerContentProvider" android:exported="true"
             android:readPermission="true" android:writePermission="true"
