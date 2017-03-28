@@ -131,7 +131,7 @@ public class FilterActivityDate extends Activity implements
         String[] selectionArgs = {FilteredDate};
         Log.d("Datepicked", FilteredDate);
         CursorLoader cursorLoader = new CursorLoader(this,
-                LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, "function");
+                LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, null);
         return cursorLoader;
     }
 

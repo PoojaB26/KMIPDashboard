@@ -126,7 +126,7 @@ public class FilterActivityLogLevel extends Activity implements
         int index= Integer.parseInt(FilteredLevel);
         String[] selectionArgs = {logLevel[index]};
         CursorLoader cursorLoader = new CursorLoader(this,
-                LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, "function");
+                LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, null);
         return cursorLoader;
     }
 
