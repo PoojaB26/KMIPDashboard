@@ -17,6 +17,8 @@ public class LogsDb {
     public static final String KEY_FUNCTION = "function";
     public static final String KEY_LOGLEVEL = "loglevel";
     public static final String KEY_LOGW = "logw";
+    public static final String KEY_OPERATION = "operation";
+    public static final String KEY_RESULT = "result";
 
 
 
@@ -33,6 +35,9 @@ public class LogsDb {
                     KEY_FUNCTION + "," +
                     KEY_LOGLEVEL + "," +
                     KEY_LOGW + "," +
+                    KEY_OPERATION + "," +
+                    KEY_RESULT + "," +
+
                     " UNIQUE (" + KEY_ROWID +"));";
 
     public static void onCreate(SQLiteDatabase db) {

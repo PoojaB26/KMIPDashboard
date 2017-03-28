@@ -148,7 +148,9 @@ public class MainActivity extends AppCompatActivity {
                 values.put(LogsDb.KEY_CLASSNAME, className);
                 values.put(LogsDb.KEY_FUNCTION, functionName);
                 values.put(LogsDb.KEY_LOGLEVEL, logLevel);
-                values.put(LogsDb.KEY_LOGW, LogW + LogResponseMessage);
+                values.put(LogsDb.KEY_LOGW, LogW);
+                values.put(LogsDb.KEY_OPERATION, LogResponseMessage);
+                values.put(LogsDb.KEY_RESULT, LogResponseMessage);
                 getContentResolver().insert(LoggerContentProvider.CONTENT_URI, values);
                 Log.d("Added", LogsDb.KEY_ROWID);
                 finish();
