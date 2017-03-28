@@ -8,6 +8,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,21 +31,16 @@ public class FilterActivityLogLevel extends Activity implements
     public static final Uri URL =
             Uri.parse("content://" + AUTHORITY + "/logs");
     private SimpleCursorAdapter dataAdapter;
-    String MY_PREFS_NAME = "DatePicker", FilteredDate = "";
+    String MY_PREFS_NAME = "DatePicker";
+    String FilteredLevel = "";
     Button filter;
     String[] logLevel ={"ALL:", "FINER:", "FINEST:"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-      /*  FilteredDate = getIntent().getExtras().getString("DATE");
-
-              *//*  SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                String restoredText = prefs.getString("text", null);
-                if (restoredText != null) {
-                        FilteredDate = prefs.getString("Date", "No name defined");//"No name defined" is the default value.
-                }*//*
-        Log.d("picked", FilteredDate);*/
+        FilteredLevel = getIntent().getExtras().getString("LEVEL");
+        Log.d("picked", FilteredLevel);
         displayListView();
         Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
         startActivity(contactEdit);
@@ -127,7 +123,8 @@ public class FilterActivityLogLevel extends Activity implements
 
 
         String selection = LogsDb.KEY_LOGLEVEL + "=?";
-        String[] selectionArgs = {logLevel[1]};
+        int index= Integer.parseInt(FilteredLevel);
+        String[] selectionArgs = {logLevel[index]};
         CursorLoader cursorLoader = new CursorLoader(this,
                 LoggerContentProvider.CONTENT_URI, projection, selection, selectionArgs, "function");
         return cursorLoader;

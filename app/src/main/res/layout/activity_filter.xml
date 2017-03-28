@@ -15,6 +15,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/filterLogLevel" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupLog"
+       >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ALL"
+            android:id="@+id/loglevel_ALL"
+            android:layout_gravity="center_horizontal"
+            android:checked="true"
+            android:textSize="15dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FINER"
+            android:id="@+id/loglevel_FINER"
+            android:layout_gravity="center_horizontal"
+            android:checked="false"
+            android:textSize="15dp"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WARNING"
+            android:id="@+id/loglevel_WARNING"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEVERE"
+            android:id="@+id/loglevel_SEVERE"
+            android:layout_gravity="center_horizontal"
+            android:checked="false"
+            android:textSize="15dp"
+            />
+    </RadioGroup>
+
 
     <Button
         android:text="Show only Response"
