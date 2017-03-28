@@ -15,6 +15,7 @@ import android.widget.SimpleCursorAdapter;
 
 import poojab26.kmipdashboard.Database.LoggerContentProvider;
 import poojab26.kmipdashboard.Database.LogsDb;
+import poojab26.kmipdashboard.Filter.FilterActivity;
 
 
 /**
@@ -39,7 +40,7 @@ public class DashboardActivity extends Activity implements
                 filter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                                Intent filterLog = new Intent(getBaseContext(),Activity_Date.class);
+                                Intent filterLog = new Intent(getBaseContext(),FilterActivity.class);
                                 startActivity(filterLog);
                         }
                 });
