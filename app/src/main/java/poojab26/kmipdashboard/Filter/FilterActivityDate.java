@@ -16,6 +16,7 @@ import android.widget.SimpleCursorAdapter;
 
 import poojab26.kmipdashboard.Database.LoggerContentProvider;
 import poojab26.kmipdashboard.Database.LogsDb;
+import poojab26.kmipdashboard.MainActivityTest;
 import poojab26.kmipdashboard.R;
 
 
@@ -47,7 +48,7 @@ public class FilterActivityDate extends Activity implements
                 }*/
         Log.d("picked", FilteredDate);
         displayListView();
-        Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
+        Intent contactEdit = new Intent(getBaseContext(), MainActivityTest.class);
         startActivity(contactEdit);
 
 

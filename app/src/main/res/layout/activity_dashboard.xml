@@ -6,20 +6,28 @@
     android:orientation="vertical"
     android:weightSum="10">
 
-<Button
-    android:id="@+id/btnFilter"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="FILTER"/>
-    <ListView android:id="@+id/contactList"
-        android:layout_weight="8.5"
-
+    <Button
+        android:id="@+id/btnFilter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="FILTER" />
+
+    <ListView
+        android:id="@+id/contactList"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add"
         android:layout_alignParentLeft="true"
-        android:layout_above="@+id/add" />
+        android:layout_weight="8.5" />
 
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:src="@android:drawable/ic_dialog_email" />
 
 
 </LinearLayout>

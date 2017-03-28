@@ -45,7 +45,7 @@ public class DashboardActivity extends Activity implements
                         }
                 });
                 displayListView();
-                Intent contactEdit = new Intent(getBaseContext(), poojab26.kmipdashboard.MainActivity.class);
+                Intent contactEdit = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(contactEdit);
 
         }
