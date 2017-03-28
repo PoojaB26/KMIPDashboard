@@ -1,0 +1,163 @@
+Dec 15, 2016 10:35:53 PM Thread[pool-6-thread-1,5,main] com.ibm.tklm.common.config.ConfigImpl get
+FINER: RETURN
+Dec 15, 2016 10:35:53 PM Thread[pool-6-thread-1,5,main] com.ibm.tklm.kmip.stub.SSLRequestProcessor run
+ALL: Responding to CN=KMIP Test Client Certificate,OU=IBM-Pune,O=IBM,L=Pune,ST=MH,C=IN
+Response message: KMIPMessage: 
+Tag: Response Message (0x42007B), Type: Structure (0x01), Data: 
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data: 
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data: 
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x00000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x00000002 (2)
+    Tag: Time Stamp (0x420092), Type: Date-Time (0x09), Data: 0x000000005853C389 (Thu Dec 15 22:35:53 GMT-12:00 2016)
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x00000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data: 
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000022 (SignatureVerify)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x00000000 (Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data: 
+      Tag: Unique Identifier (0x420094), Type: Text String (0x07), Data: KEY-ddd2652-1bb24013-f967-4002-8f17-237789f99d6d
+      Tag: Validity Indicator (0x42009B), Type: Enumeration (0x05), Data: 0x00000001 (Valid)
+Dec 15, 2016 10:35:53 PM Thread[pool-6-thread-1,5,main] com.ibm.tklm.kmip.stub.SSLRequestProcessor run
+ALL: Response message: KMIPMessage: 
+Tag: Response Message (0x42007B), Type: Structure (0x01), Data: 
+  Tag: Response Header (0x42007A), Type: Structure (0x01), Data: 
+    Tag: Protocol Version (0x420069), Type: Structure (0x01), Data: 
+      Tag: Protocol Version Major (0x42006A), Type: Integer (0x02), Data: 0x00000001 (1)
+      Tag: Protocol Version Minor (0x42006B), Type: Integer (0x02), Data: 0x00000002 (2)
+    Tag: Time Stamp (0x420092), Type: Date-Time (0x09), Data: 0x000000005853C389 (Thu Dec 15 22:35:53 GMT-12:00 2016)
+    Tag: Batch Count (0x42000D), Type: Integer (0x02), Data: 0x00000001 (1)
+  Tag: Batch Item (0x42000F), Type: Structure (0x01), Data: 
+    Tag: Operation (0x42005C), Type: Enumeration (0x05), Data: 0x00000022 (SignatureVerify)
+    Tag: Result Status (0x42007F), Type: Enumeration (0x05), Data: 0x00000000 (Success)
+    Tag: Response Payload (0x42007C), Type: Structure (0x01), Data: 
+      Tag: Unique Identifier (0x420094), Type: Text String (0x07), Data: KEY-ddd2652-1bb24013-f967-4002-8f17-237789f99d6d
+      Tag: Validity Indicator (0x42009B), Type: Enumeration (0x05), Data: 0x00000001 (Valid)
+Dec 15, 2016 10:35:53 PM Thread[pool-6-thread-1,5,main] com.ibm.tklm.kmip.encoder.TTLVEncoder encode
+ALL: Level: 0, MAX_LEVEL: 10
+Dec 13, 2016 11:02:16 AM 
+Thread[pool-6-thread-9,5,main]
+com.ibm.tklm.server.db.dao.jdbc.Insert 
+executeWithColumnPositions(String, String, NamedParameters)
+ALL: SQL=INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?)
+
+Dec 13, 2016 11:02:16 AM 
+Thread[pool-6-thread-9,5,main]
+com.ibm.tklm.server.db.dao.jdbc.Utils 
+createPreparedStatement(sql)
+FINER: ENTRY INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?)
+
+Dec 13, 2016 11:02:16 AM 
+Thread[pool-6-thread-9,5,main] 
+com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory 
+getConnection()
+FINER: ENTRY
+
+Dec 13, 2016 11:02:16 AM 
+Thread[pool-6-thread-9,5,main] 
+com.ibm.tklm.server.db.dao.jdbc.InternalDataSourceConnectionProvider 
+getConnection()
+FINER: ENTRY
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.InternalDataSourceConnectionProvider getDataSource()
+FINER: ENTRY
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.InternalDataSourceConnectionProvider getDataSource()
+FINER: RETURN
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.InternalDataSourceConnectionProvider getConnection()
+FINER: RETURN
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory printConnectionProperties(connection)
+ALL: Transaction isolation level: REPEATABLE READ
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory getConnection()
+FINER: RETURN
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Utils createPreparedStatement(sql)
+FINER: RETURN com.ibm.ws.rsadapter.jdbc.WSJccPreparedStatement@e191b95a
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Insert setParams(String, PreparedStatement, NamedParameters, String)
+FINER: ENTRY KMT_KMIP_ATTR_CRYPTOPARAMS ROLE_TYPE: -1
+BLOCK_CIPHER_MODE: 2
+INDEX_ID: 0
+PADDING_METHOD: 3
+CRYPTOGRAPHIC_ALGORITHM: -1
+MANAGED_OBJECT_UUID: KEY-ddd2652-5fd7f956-dbc1-4801-b1ff-996520c5be57
+HASHING_ALGORITHM: -1
+RANDOM_IV: 1 INSERT INTO KMT_KMIP_ATTR_CRYPTOPARAMS(BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM) VALUES (?,?,?,?,?,?,?,?)
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.DataBaseMetaData getTableMap()
+FINER: ENTRY
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.DataBaseMetaData getTableMap()
+FINER: RETURN
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Insert setParams(String, PreparedStatement, NamedParameters, String)
+ALL: Table columns: {ROLE_TYPE=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@7ba7d244 Column Name: ROLE_TYPE Ordinal Position: 4 Data Type: 4 SQL Type Name: INTEGER Is Nullable: true Is isQuotable: false Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false, BLOCK_CIPHER_MODE=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@9b865428 Column Name: BLOCK_CIPHER_MODE Ordinal Position: 1 Data Type: 4 SQL Type Name: INTEGER Is Nullable: true Is isQuotable: false Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false, INDEX_ID=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@2a6a572b Column Name: INDEX_ID Ordinal Position: 6 Data Type: 5 SQL Type Name: SMALLINT Is Nullable: false Is isQuotable: false Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false, PADDING_METHOD=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@6e6971f1 Column Name: PADDING_METHOD Ordinal Position: 2 Data Type: 4 SQL Type Name: INTEGER Is Nullable: true Is isQuotable: false Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false, CRYPTOGRAPHIC_ALGORITHM=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@ad04d72e Column Name: CRYPTOGRAPHIC_ALGORITHM Ordinal Position: 9 Data Type: 4 SQL Type Name: INTEGER Is Nullable: true Is isQuotable: false Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false, HASHING_ALGORITHM=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@bfd4105 Column Name: HASHING_ALGORITHM Ordinal Position: 3 Data Type: 4 SQL Type Name: INTEGER Is Nullable: true Is isQuotable: false Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false, MANAGED_OBJECT_UUID=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@9c5ed51c Column Name: MANAGED_OBJECT_UUID Ordinal Position: 5 Data Type: 12 SQL Type Name: VARCHAR Is Nullable: false Is isQuotable: true Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false, RANDOM_IV=com.ibm.tklm.server.db.dao.jdbc.impl.TableColumnImpl@b1c39822 Column Name: RANDOM_IV Ordinal Position: 8 Data Type: 5 SQL Type Name: SMALLINT Is Nullable: true Is isQuotable: false Table: com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl@6049adc4 autoGenerated: false}
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Insert setParams(String, PreparedStatement, NamedParameters, String)
+ALL: Table name KMT_KMIP_ATTR_CRYPTOPARAMS
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Insert setParams(String, PreparedStatement, NamedParameters, String)
+ALL: Matched Table Columns BLOCK_CIPHER_MODE,PADDING_METHOD,HASHING_ALGORITHM,ROLE_TYPE,MANAGED_OBJECT_UUID,INDEX_ID,RANDOM_IV,CRYPTOGRAPHIC_ALGORITHM
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Insert setParams(String, PreparedStatement, NamedParameters, String)
+FINER: RETURN
+Dec 13, 2016 11:02:16 AM Thread[Thread-503,5,main] WriteThread run
+ALL: file channel open?true, thread=Thread[Thread-503,5,main]
+Dec 13, 2016 11:02:16 AM Thread[Thread-503,5,main] WriteThread run
+ALL: size not reached max
+Dec 13, 2016 11:02:16 AM Thread[Thread-503,5,main] WriteThread run
+ALL: audit log size is 6156404
+Dec 13, 2016 11:02:16 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Insert executeWithColumnPositions(String, String, NamedParameters)
+FINER: RETURN
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.daokmip.CryptoParametersFactory create(String, Parameters)
+FINER: RETURN [[INDEX 0] [MODE ECB] [PAD PKCS5] [IV_FLAG true]]
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.daokmip.CryptoParametersEntity create(String, Parameters)
+FINER: RETURN [[INDEX 0] [MODE ECB] [PAD PKCS5] [IV_FLAG true]]
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.daokmip.CustomAttributeEntity create(Custom)
+FINER: ENTRY [[NAME x-ID] [[INDEX 0] [TYPE JAVA_STRING] [VALUE CS-BC-M-13-12]]]
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.daokmip.CustomAttributeFactory create(String,Custom)
+FINER: ENTRY KEY-ddd2652-5fd7f956-dbc1-4801-b1ff-996520c5be57 [[NAME x-ID] [[INDEX 0] [TYPE JAVA_STRING] [VALUE CS-BC-M-13-12]]]
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.daokmip.CustomAttributeFactory getQueryNamedParametersMap(Custom)
+FINER: ENTRY
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters addParam(String, String)
+FINER: ENTRY MANAGED_OBJECT_UUID KEY-ddd2652-5fd7f956-dbc1-4801-b1ff-996520c5be57
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters addParam(String, String)
+FINER: RETURN
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters addParam(String, String)
+FINER: ENTRY ATTR_NAME x-ID
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters addParam(String, String)
+FINER: RETURN
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Search searchByANDFilter(tableName, tableNameSuffix, filterParams, count)
+FINER: ENTRY KMT_KMIP_ATTR_CUSTOM null ATTR_NAME: x-ID
+MANAGED_OBJECT_UUID: KEY-ddd2652-5fd7f956-dbc1-4801-b1ff-996520c5be57
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.SearchSQLFactory generateSearchByAndFilter(tableName, tableNameSuffix, filterParams, int count)
+FINER: ENTRY KMT_KMIP_ATTR_CUSTOM null ATTR_NAME: x-ID
+MANAGED_OBJECT_UUID: KEY-ddd2652-5fd7f956-dbc1-4801-b1ff-996520c5be57
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters getOrdereParameterNames()
+FINER: ENTRY
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters getOrdereParameterNames()
+FINER: RETURN MANAGED_OBJECT_UUID:ATTR_NAME
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.SearchSQLFactory generateSearchByAndFilter(tableName, tableNameSuffix, filterParams, int count)
+ALL: key=KMT_KMIP_ATTR_CUSTOM:MANAGED_OBJECT_UUID:ATTR_NAME
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.DataBaseMetaData getTableMap()
+FINER: ENTRY
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.DataBaseMetaData getTableMap()
+FINER: RETURN
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl getTableColumnListString(String)
+FINER: ENTRY null
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl getTableColumnListString(String)
+FINER: ENTRY null
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.impl.TableImpl getTableColumnListString(String)
+FINER: RETURN MANAGED_OBJECT_UUID,TYPE,ATTR_NAME,ATTR_VALUE,INDEX_ID,LAST_UPDATE_TIMESTAMP
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.FilterSQLFactory generateSearchByAndFilter(tableName, tableNameSuffix, filterParams)
+FINER: ENTRY ATTR_NAME: x-ID
+MANAGED_OBJECT_UUID: KEY-ddd2652-5fd7f956-dbc1-4801-b1ff-996520c5be57
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters getOrdereParameterNames()
+FINER: ENTRY
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.NamedParameters getOrdereParameterNames()
+FINER: RETURN MANAGED_OBJECT_UUID:ATTR_NAME
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.FilterSQLFactory generateSearchByAndFilter(tableName, tableNameSuffix, filterParams)
+FINER: RETURN filterSQL=MANAGED_OBJECT_UUID=? AND ATTR_NAME=?
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.FilterSQLFactory generateSearchByAndFilter(tableName, tableNameSuffix, orderByParams)
+FINER: ENTRY [Ljava.lang.String;@cd3535fc
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.FilterSQLFactory generateSearchByAndFilter(tableName, tableNameSuffix, orderByParams)
+FINER: RETURN orderBySQL= ORDER BY INDEX_ID DESC 
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.SearchSQLFactory generateSearchByAndFilter(tableName, tableNameSuffix, filterParams, int count)
+FINER: RETURN  SELECT MANAGED_OBJECT_UUID,TYPE,ATTR_NAME,ATTR_VALUE,INDEX_ID,LAST_UPDATE_TIMESTAMP FROM KMT_KMIP_ATTR_CUSTOM WHERE MANAGED_OBJECT_UUID=? AND ATTR_NAME=? ORDER BY INDEX_ID DESC 
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.Utils createPreparedStatement(sql, params)
+FINER: ENTRY  SELECT MANAGED_OBJECT_UUID,TYPE,ATTR_NAME,ATTR_VALUE,INDEX_ID,LAST_UPDATE_TIMESTAMP FROM KMT_KMIP_ATTR_CUSTOM WHERE MANAGED_OBJECT_UUID=? AND ATTR_NAME=? ORDER BY INDEX_ID DESC  ATTR_NAME: x-ID
+MANAGED_OBJECT_UUID: KEY-ddd2652-5fd7f956-dbc1-4801-b1ff-996520c5be57
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.ConnectionFactory getConnection()
+FINER: ENTRY
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.InternalDataSourceConnectionProvider getConnection()
+FINER: ENTRY
+Dec 13, 2016 11:02:17 AM Thread[pool-6-thread-9,5,main] com.ibm.tklm.server.db.dao.jdbc.InternalDataSourceConnectionProvider getDataSource()
+FINER: ENTRY
