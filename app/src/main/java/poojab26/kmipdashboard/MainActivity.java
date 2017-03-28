@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void tokenize(String myString){
+        String operation ="", result="";
         for(int i=0; i<TokenIndex.size()-1; i++){
             String testString = myString.substring(TokenIndex.get(i), TokenIndex.get(i+1));
 
@@ -139,8 +140,19 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Thread", Thread);
                 Log.d("Day", Date);
                 Log.d("Day", Time);
-                checkIfResponse(LogW + LogResponseMessage);
+                boolean check = checkIfResponse(LogW + LogResponseMessage);
+                Log.d("TRUEORNOT", String.valueOf(check));
+                if(check==true){
+                    operation = getOperation(LogW + LogResponseMessage);
+                    Log.d("OPERATION FOUND", operation);
+                    result = getResult(LogW + LogResponseMessage);
+                    Log.d("RESULT FOUND", result);
 
+                }
+                else{
+                    operation = "";
+                    result = "";
+                }
                 ContentValues values = new ContentValues();
                 values.put(LogsDb.KEY_DATE, Date);
                 values.put(LogsDb.KEY_TIME, Time);
@@ -149,8 +161,8 @@ public class MainActivity extends AppCompatActivity {
                 values.put(LogsDb.KEY_FUNCTION, functionName);
                 values.put(LogsDb.KEY_LOGLEVEL, logLevel);
                 values.put(LogsDb.KEY_LOGW, LogW);
-                values.put(LogsDb.KEY_OPERATION, LogResponseMessage);
-                values.put(LogsDb.KEY_RESULT, LogResponseMessage);
+                values.put(LogsDb.KEY_OPERATION, operation);
+                values.put(LogsDb.KEY_RESULT, result);
                 getContentResolver().insert(LoggerContentProvider.CONTENT_URI, values);
                 Log.d("Added", LogsDb.KEY_ROWID);
                 finish();
@@ -163,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkIfResponse(String message) {
+    private boolean checkIfResponse(String message) {
         String pattern = "(\\bResponse Message*\\b)";
         Pattern regEx = Pattern.compile(pattern);
         String test, response;
@@ -175,7 +187,77 @@ public class MainActivity extends AppCompatActivity {
             response = m.group(1);
             ResponseIndex.add(m.start());
             Log.d("response", response);
+            return true;
+
+        }
+        return false;
+    }
+
+    private String getOperation(String message) {
+        String operationValue="";
+        String pattern = "(Tag: Operation).*";
+        Pattern regEx = Pattern.compile(pattern);
+        String test, operationMessage ="";
+        // Find instance of pattern matches
+        Matcher m = regEx.matcher(message);
+        while (m.find()) {
+            test = m.group();
+            operationMessage = m.group(0);
+            Log.d("operation", operationMessage);
+            operationValue = getOperationValue(operationMessage);
         }
 
+        return operationValue;
+    }
+
+    private String getOperationValue(String operationMessage) {
+
+        String Value="";
+        String pattern = "\\(([a-zA-Z]*)\\)";
+        Pattern regEx = Pattern.compile(pattern);
+        String test;
+        // Find instance of pattern matches
+        Matcher m = regEx.matcher(operationMessage);
+        while (m.find()) {
+            test = m.group();
+            Value = m.group(1);
+            Log.d("operationValue", Value);
+        }
+
+        return Value;
+    }
+
+    private String getResult(String message) {
+        String resultValue="";
+        String pattern = "(Tag: Result Status).*";
+        Pattern regEx = Pattern.compile(pattern);
+        String test, resultMessage ="";
+        // Find instance of pattern matches
+        Matcher m = regEx.matcher(message);
+        while (m.find()) {
+            test = m.group();
+            resultMessage = m.group(0);
+            Log.d("resultValue", resultMessage);
+            resultValue = getResultValue(resultMessage);
+        }
+
+        return resultValue;
+    }
+
+    private String getResultValue(String resultMessage) {
+
+        String Value="";
+        String pattern = "\\(([a-zA-Z]*)\\)";
+        Pattern regEx = Pattern.compile(pattern);
+        String test;
+        // Find instance of pattern matches
+        Matcher m = regEx.matcher(resultMessage);
+        while (m.find()) {
+            test = m.group();
+            Value = m.group(1);
+            Log.d("resultValue", Value);
+        }
+
+        return Value;
     }
 }
