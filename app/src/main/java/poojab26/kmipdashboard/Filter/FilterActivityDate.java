@@ -32,25 +32,17 @@ public class FilterActivityDate extends Activity implements
     public static final Uri URL =
             Uri.parse("content://" + AUTHORITY + "/logs");
     private SimpleCursorAdapter dataAdapter;
-    String MY_PREFS_NAME = "DatePicker", FilteredDate = "";
     FloatingActionButton filter;
+    String MY_PREFS_NAME = "DatePicker", FilteredDate = "";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
         FilteredDate = getIntent().getExtras().getString("DATE");
-
-              /*  SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-                String restoredText = prefs.getString("text", null);
-                if (restoredText != null) {
-                        FilteredDate = prefs.getString("Date", "No name defined");//"No name defined" is the default value.
-                }*/
         Log.d("picked", FilteredDate);
-        displayListView();
-        Intent contactEdit = new Intent(getBaseContext(), MainActivityTest.class);
-        startActivity(contactEdit);
-
 
         filter = (FloatingActionButton) findViewById(R.id.fabFilter);
         filter.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +52,9 @@ public class FilterActivityDate extends Activity implements
                 startActivity(filterLog);
             }
         });
+        displayListView();
+        Intent intentMain = new Intent(getBaseContext(), MainActivityTest.class);
+        startActivity(intentMain);
 
     }
 
@@ -81,7 +76,11 @@ public class FilterActivityDate extends Activity implements
                 LogsDb.KEY_CLASSNAME,
                 LogsDb.KEY_FUNCTION,
                 LogsDb.KEY_LOGLEVEL,
-                LogsDb.KEY_LOGW
+                LogsDb.KEY_LOGW,
+                LogsDb.KEY_OPERATION,
+                LogsDb.KEY_RESULT
+
+
         };
 
         // the XML defined views which the data will be bound to
@@ -93,6 +92,8 @@ public class FilterActivityDate extends Activity implements
                 R.id.tvFunction,
                 R.id.tvLoglevel,
                 R.id.tvLogw,
+                R.id.tvOperation,
+                R.id.tvResult
 
         };
 
@@ -125,7 +126,10 @@ public class FilterActivityDate extends Activity implements
                 LogsDb.KEY_CLASSNAME,
                 LogsDb.KEY_FUNCTION,
                 LogsDb.KEY_LOGLEVEL,
-                LogsDb.KEY_LOGW};
+                LogsDb.KEY_LOGW,
+                LogsDb.KEY_OPERATION,
+                LogsDb.KEY_RESULT
+        };
 
 
         String selection = LogsDb.KEY_DATE + "=?";

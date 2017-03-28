@@ -45,8 +45,8 @@ public class DashboardActivity extends Activity implements
             }
         });
         displayListView();
-        Intent contactEdit = new Intent(getBaseContext(), MainActivity.class);
-        startActivity(contactEdit);
+        Intent intentMain = new Intent(getBaseContext(), MainActivityTest.class);
+        startActivity(intentMain);
 
     }
 
