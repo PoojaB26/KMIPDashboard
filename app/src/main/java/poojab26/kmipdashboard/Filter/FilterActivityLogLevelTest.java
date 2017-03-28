@@ -24,7 +24,7 @@ import poojab26.kmipdashboard.R;
  * Created by pblead26 on 26-Mar-17.
  */
 
-public class FilterActivityLogLevel extends Activity implements
+public class FilterActivityLogLevelTest extends Activity implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final String AUTHORITY = "com.pblead26.contentprovider";
 
@@ -32,16 +32,20 @@ public class FilterActivityLogLevel extends Activity implements
     public static final Uri URL =
             Uri.parse("content://" + AUTHORITY + "/logs");
     private SimpleCursorAdapter dataAdapter;
+    String MY_PREFS_NAME = "DatePicker";
     String FilteredLevel = "";
     FloatingActionButton filter;
     String[] logLevel ={"ALL:", "FINER:", "FINEST:"};
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         FilteredLevel = getIntent().getExtras().getString("LEVEL");
         Log.d("picked", FilteredLevel);
+        displayListView();
+        Intent contactEdit = new Intent(getBaseContext(), MainActivityTest.class);
+        startActivity(contactEdit);
+
 
         filter = (FloatingActionButton) findViewById(R.id.fabFilter);
         filter.setOnClickListener(new View.OnClickListener() {
@@ -51,9 +55,6 @@ public class FilterActivityLogLevel extends Activity implements
                 startActivity(filterLog);
             }
         });
-        displayListView();
-        Intent intentMain = new Intent(getBaseContext(), MainActivityTest.class);
-        startActivity(intentMain);
 
     }
 
@@ -75,11 +76,7 @@ public class FilterActivityLogLevel extends Activity implements
                 LogsDb.KEY_CLASSNAME,
                 LogsDb.KEY_FUNCTION,
                 LogsDb.KEY_LOGLEVEL,
-                LogsDb.KEY_LOGW,
-                LogsDb.KEY_OPERATION,
-                LogsDb.KEY_RESULT
-
-
+                LogsDb.KEY_LOGW
         };
 
         // the XML defined views which the data will be bound to
@@ -91,8 +88,6 @@ public class FilterActivityLogLevel extends Activity implements
                 R.id.tvFunction,
                 R.id.tvLoglevel,
                 R.id.tvLogw,
-                R.id.tvOperation,
-                R.id.tvResult
 
         };
 
@@ -125,10 +120,8 @@ public class FilterActivityLogLevel extends Activity implements
                 LogsDb.KEY_CLASSNAME,
                 LogsDb.KEY_FUNCTION,
                 LogsDb.KEY_LOGLEVEL,
-                LogsDb.KEY_LOGW,
-                LogsDb.KEY_OPERATION,
-                LogsDb.KEY_RESULT
-        };
+                LogsDb.KEY_LOGW};
+
 
         String selection = LogsDb.KEY_LOGLEVEL + "=?";
         int index= Integer.parseInt(FilteredLevel);
