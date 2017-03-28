@@ -1,68 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:text="Date"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/filterDate"
-        android:elevation="0dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:text="Log Level"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/filterLogLevel" />
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioGroupLog"
-       >
-
-        <RadioButton
-            android:layout_width="wrap_content"
+        <Button
+            android:text="Filter By Date"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ALL"
-            android:id="@+id/loglevel_ALL"
-            android:layout_gravity="center_horizontal"
-            android:checked="true"
-            android:textSize="15dp" />
+            android:id="@+id/filterDate"
+            android:background="#44456c"
+            android:textColor="#fff"
+            android:layout_marginTop="3dp"
+            android:elevation="0dp" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/dateView"
+            android:visibility="gone"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FINER"
-            android:id="@+id/loglevel_FINER"
-            android:layout_gravity="center_horizontal"
-            android:checked="false"
-            android:textSize="15dp"
-            />
+            android:orientation="vertical">
 
-        <RadioButton
-            android:layout_width="wrap_content"
+            <DatePicker
+                android:id="@+id/datePicker1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                />
+
+
+            <Button
+                android:id="@+id/changeDatebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change Date" />
+        </LinearLayout>
+
+
+        <Button
+            android:text="Filter by Log Level"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="WARNING"
-            android:id="@+id/loglevel_WARNING"
-            android:layout_gravity="center_horizontal"
-            android:textSize="15dp" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
+            android:background="#44456c"
+            android:textColor="#fff"
+            android:layout_marginTop="3dp"
+            android:id="@+id/filterLogLevel" />
+        <RadioGroup
+            android:visibility="gone"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SEVERE"
-            android:id="@+id/loglevel_SEVERE"
-            android:layout_gravity="center_horizontal"
-            android:checked="false"
-            android:textSize="15dp"
-            />
-    </RadioGroup>
+            android:id="@+id/radioGroupLog"
+            >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALL"
+                android:id="@+id/loglevel_ALL"
+                android:layout_gravity="center_horizontal"
+                android:textSize="15dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FINER"
+                android:id="@+id/loglevel_FINER"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textSize="15dp"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WARNING"
+                android:id="@+id/loglevel_WARNING"
+                android:layout_gravity="center_horizontal"
+                android:textSize="15dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEVERE"
+                android:id="@+id/loglevel_SEVERE"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textSize="15dp"
+                />
+            <Button
+                android:text="Filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/filterbtn" />
+        </RadioGroup>
 
 
-    <Button
-        android:text="Show only Response"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/filterResponse" />
-</LinearLayout>
+
+        <CheckBox
+            android:text="Show only Response"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:id="@+id/filterResponse" />
+
+    </LinearLayout>
+
+</ScrollView>
