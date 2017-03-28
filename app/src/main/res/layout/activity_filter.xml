@@ -35,6 +35,11 @@
 
             <Button
                 android:id="@+id/changeDatebtn"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="#55aed7"
+                android:textColor="#fff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Change Date" />
@@ -92,8 +97,13 @@
                 android:textSize="15dp"
                 />
             <Button
-                android:text="Filter"
-                android:layout_width="match_parent"
+                android:text="APPLY"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="#55aed7"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/filterbtn" />
         </RadioGroup>
