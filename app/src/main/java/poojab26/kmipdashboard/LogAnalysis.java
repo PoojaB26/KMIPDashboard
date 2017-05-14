@@ -23,7 +23,7 @@ import poojab26.kmipdashboard.Database.LoggerContentProvider;
 import poojab26.kmipdashboard.Database.LogsDb;
 import poojab26.kmipdashboard.Model.LogModel;
 
-public class MainActivityTest extends AppCompatActivity {
+public class LogAnalysis extends AppCompatActivity {
     String FullMatch = "";
     String Date = "";
     String Time = "";
@@ -107,7 +107,8 @@ public class MainActivityTest extends AppCompatActivity {
         String test;
 
         // Pattern to find code
-        String pattern = "([A-Za-z]{3} \\d+, \\d*)( .{8} (AM|PM)) (Thread\\[.*\\]) (com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST){0,1}:)(.*)(([\\n]*.*)*)";
+        String pattern = "([A-Za-z]{3} \\d+, \\d*)( .{8} (AM|PM)) (Thread\\[.*\\]) " +
+                "(com.[a-zA-Z.]+([a-zA-Z])*)(.*)\\s((?:ALL|FINER|FINEST){0,1}:)(.*)(([\\n]*.*)*)";
         Pattern regEx = Pattern.compile(pattern);
 
         // Find instance of pattern matches

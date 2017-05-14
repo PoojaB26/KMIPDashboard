@@ -45,7 +45,7 @@ public class DashboardActivity extends Activity implements
             }
         });
         displayListView();
-        Intent intentMain = new Intent(getBaseContext(), MainActivityTest.class);
+        Intent intentMain = new Intent(getBaseContext(), LogAnalysis.class);
         startActivity(intentMain);
 
     }

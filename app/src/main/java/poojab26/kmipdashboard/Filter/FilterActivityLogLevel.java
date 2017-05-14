@@ -16,7 +16,7 @@ import android.widget.SimpleCursorAdapter;
 
 import poojab26.kmipdashboard.Database.LoggerContentProvider;
 import poojab26.kmipdashboard.Database.LogsDb;
-import poojab26.kmipdashboard.MainActivityTest;
+import poojab26.kmipdashboard.LogAnalysis;
 import poojab26.kmipdashboard.R;
 
 
@@ -34,7 +34,7 @@ public class FilterActivityLogLevel extends Activity implements
     private SimpleCursorAdapter dataAdapter;
     String FilteredLevel = "";
     FloatingActionButton filter;
-    String[] logLevel ={"ALL:", "FINER:", "FINEST:"};
+    String[] logLevel ={"ALL:", "FINER:", "FINEST:" , "WARNING:", "SEVERE:"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class FilterActivityLogLevel extends Activity implements
             }
         });
         displayListView();
-        Intent intentMain = new Intent(getBaseContext(), MainActivityTest.class);
+        Intent intentMain = new Intent(getBaseContext(), LogAnalysis.class);
         startActivity(intentMain);
 
     }

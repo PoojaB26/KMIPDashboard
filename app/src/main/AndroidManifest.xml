@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivityTest"></activity>
+        <activity android:name=".LogAnalysis"></activity>
         <activity android:name=".DashboardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,6 @@
         <activity android:name=".Filter.FilterActivityDate"></activity>
         <activity android:name=".Filter.FilterActivity"></activity>
         <activity android:name=".Filter.FilterActivityLogLevel"></activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
 
         <provider android:name=".Database.LoggerContentProvider" android:exported="true"
             android:readPermission="true" android:writePermission="true"
